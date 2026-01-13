@@ -94,7 +94,7 @@ const AuthorizationContainer = ({className}) => {
         <Input type="text" $margin="0 0 10px 0" placeholder="Email" {...register('login', {
             onChange: ()=> setServerError(null),
           })}/>
-        <Input type="text" $margin="0 0 10px 0" placeholder="Password" {...register('password', {
+        <Input type="password" $margin="0 0 10px 0" placeholder="Password" {...register('password', {
             onChange: ()=> setServerError(null),
           })} />
         <Button variant="contained" type='submit' >Log In</Button>

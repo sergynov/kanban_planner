@@ -72,8 +72,7 @@ const TaskContainer = ({className, task}) => {
                   <div className="task-item">
                     <Checkbox  checked={task.completed} color="success"
                     onChange={(e) =>
-                      dispatch(updateTaskStatusAsync(task.id,e.target.checked))
-} />
+                      dispatch(updateTaskStatusAsync(task.id,e.target.checked))} />
                     <div className="title-div">
                     {task.title}
                     </div>
@@ -101,12 +100,11 @@ export const Task = styled(TaskContainer)`
   border: 1px solid grey;
   border-radius: 5px;
   margin-bottom: 10px;
+
   .task-item{
     display: flex;
-
     flex-direction: row;
     align-items: center;
-    
   }
   .title-div{
     flex-grow: 1;
@@ -114,7 +112,6 @@ export const Task = styled(TaskContainer)`
   .task-title{
     font-size: 18px;
     padding: 5px;
-
   }
   .task-edit {
     display: flex;

@@ -13,33 +13,37 @@ If you are developing a production application, we recommend using TypeScript wi
 
 
 Области хранения данных:
-- БД mongoDB
+- База данный mongoDB
 
 Сущности приложения:
-- Пользователь: БД (список пользователей)
-- Доска: БД 
-- Задачи пользователя
+- Пользователи: БД 
+- Доски: БД 
+- Колонки: БД
+- Задачи пользователя: БД
 
 Таблицы БД:
 - Пользователи - users: id / login / password / registered_at / role_id 
-- Доски - boards: id / title / user_id
-- Колонки - columns: id / title / 
-- Задачи - tasks: id / title / description / status / due_date
+- Доски - boards: id / title / user_id / created_at
+- Колонки - columns: id / title / order / created_at
+- Задачи - tasks: id / title / description / order / status / created_at
 
-
-Схема состояния :
-- Сессия текущего пользователя: login / password / Все задачи пользователя
-- 
- 
- 
- //
 
  Страницы:
  - Login 
  - Register
  - Main Page 
  - My Boards (все доски пользоватея)
- - One board page (with column, tasks)
+ - One board page (column, tasks)
  - About page
 
-Схема для редакс стора (на клиенте):
+Схема для Redux store (на клиенте):
+- User: Хранит данные текущего пользователя (id, login) и состояние авторизации (isAuth).
+- Board: Хранит список досок пользователя, активную доску, связанные с ней колонки и задачи, а также состояние загрузки и ошибок.
+- Tasks: Хранит все задачи пользователя (используется как клиентский кэш)
+- Search: Хранит строку поиска для фильтрации данных.
+
+Состояние страниц:
+- Страница авторизации — использует user
+- Страница досок — использует board.list
+- Страница одной доски — использует board.board, board.columns, tasks.all
+- Страница профиля — использует user
