@@ -8,7 +8,7 @@ import { useState } from "react";
 import { useResetForm } from "../../../hooks";
 import {useForm} from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { AuthFormError } from "../../../../../../blog/frontend1/src/components";
+import { AuthFormError } from "../../authError/authError";
 import { userRegister } from "../../../actions";
 
 const regFormSchema = yup.object().shape({
