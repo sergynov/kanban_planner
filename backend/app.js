@@ -33,3 +33,4 @@ mongoose.connect(process.env.DB_CONNECTION_STRING)
       console.log(`Server has beeen started on port ${port}`)
     })
   })
+  // На продакшн 127.0.0.1

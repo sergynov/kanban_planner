@@ -47,3 +47,8 @@ If you are developing a production application, we recommend using TypeScript wi
 - Страница досок — использует board.list
 - Страница одной доски — использует board.board, board.columns, tasks.all
 - Страница профиля — использует user
+
+Deployment
+Для deploy использовались:
+- Backend: Сервер timewebcloud, Node.js, для запуска pm2
+- Frontend: Сервер timewebcloud, веб-сервер Ngnix, сборка React+Vite

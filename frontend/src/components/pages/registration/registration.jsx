@@ -10,6 +10,7 @@ import {useForm} from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { AuthFormError } from "../../authError/authError";
 import { userRegister } from "../../../actions";
+import { useNavigate } from "react-router";
 
 const regFormSchema = yup.object().shape({
   login: yup.string()
@@ -38,6 +39,7 @@ const regFormSchema = yup.object().shape({
 const RegistrationContainer = ({className}) => {
 
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const [serverError,setServerError] = useState(null)
 
     const {
@@ -55,9 +57,14 @@ const RegistrationContainer = ({className}) => {
     })
   
 
-  const onSubmit = ({login,password}) =>{
+  const onSubmit = async ({login,password}) =>{
     try {
-      dispatch(userRegister(login,password))
+      const data = await dispatch(userRegister(login,password))
+      if (data.error) {
+      setServerError(data.error);
+      return;
+          }
+      navigate('/');
     } catch (e) {
       setServerError(e.message)
     }
